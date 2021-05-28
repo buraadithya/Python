@@ -1,0 +1,83 @@
+=>> Separater:print("welcome","to","the","python","programming",sep="\n")
+
+=>> for i in reversed(range(1,10)): # To Reverse
+            print(i,end=' ').
+
+=>> print('Enter height in centimeter:') # To calculate BMI
+    height=float(input())
+    print('Enter weight in KG:')
+    weight=float(input())
+    height=height/100
+    bmi=weight/(height*height)
+    print(bmi)
+    if bmi>20:
+        print('bmi is underweight')
+    elif bmi in range(21,25):
+        print('bmi is normal').
+    
+=>> print('Enter any numner') # To find Factors of a number
+    num=int(input())
+    count=0
+    fact=2
+    while (fact<=num):
+        if(num%fact==0):
+            print(fact,'is factor of',num)
+            count+=1
+        fact+=1
+
+=>> print('Enter any number') # To find Even and Odd
+    numb=int(input())
+    a=1
+    while (a<=numb):
+        if(a%2==0):
+            print(a,'is even')
+        else:
+            print(a,'is odd')
+        a+=1.
+    
+=>> 1.numb=int(input('Enter any number:')) # To find Prime numbers
+    for i in range(2,numb):
+        for j in range(2,i):
+            if (i%j==0):
+                break
+        else:
+            print(i).
+        
+    2.for i in range(1,101):
+        count=0
+        for j in range(1,i+1):
+            if(i%j==0):
+                count+=1
+        if(count==2):
+            print(i)
+        
+=>> print('Enter any number') #  To find factors and prime or non prime
+    num=int(input())
+    count=0
+    fact=1
+    while (fact<=num):
+        if(num%fact==0):
+            print(fact,'is factor of',num)
+            count+=1
+        fact+=1
+    if (count==2):
+        print('Prime number')
+    else:
+        print('non-prime number')
+    
+=>> a=[8,5,2,9,6,3] # To do sum of all no in list:
+    sum1=0
+    for i in range(len(a)):
+         sum1=sum1+a[i]
+    print(sum1)
+    
+fruits=['apple','banana','orange','kiwi','grapes','mango']
+print(fruits[::-1]) # To reverse list
+
+print(fruits[:4]) # To print first four elements in list:
+
+print(fruits[:-1]) # To delete last element in a list:
+
+print(fruits[-4:-2]) # To give certain elements
+['orange', 'kiwi']
+
