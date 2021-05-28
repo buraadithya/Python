@@ -1,0 +1,124 @@
+=>> python --version # To know the version
+
+=>> : # (indentation) To indicate a block of code
+
+=>> # -> To comment
+
+=>> Variables are containers for storing data values Ex: x=5,x='Hi'
+
+=>> x = "awesome" # Global varivale (Variables that are created outside of a function)
+    def myfunc():
+        print("Python is " + x)
+    myfunc()
+
+=>> Built-in Data Types:
+                        Text Type:	    str
+                        Numeric Types:	int, float, complex
+                        Sequence Types:	list, tuple, range
+                        Mapping Type:  	dict
+                        Set Types:	    set, frozenset
+                        Boolean Type:	  bool
+                        Binary Types:	  bytes, bytearray, memoryview
+                        
+=>> x = 5
+    print(type(x)) # To know type of variable
+    
+=>> x = 1    # int
+    y = 2.8  # float
+    z = 1j   # complex
+    
+=>> import random
+    print(random.randrange(1, 10)) # To Return random number
+    
+=>> x = int(1)   # x will be 1 # To converts one data type to another(casting)
+    y = int(2.8) # y will be 2 # see here float coverted to integer
+    z = int("3") # z will be 3
+    
+=>> String: ' ','''  ''',
+            """
+           
+            """ # To represent string in multiple lines
+            
+=>> a = "Hello, World!"
+   -> print(len(a)) # To Return the length of a string
+   -> print("Hello" in a) # To check if a certain phrase or character is present in a string,we can use the keyword in.
+   -> if "Hello" in a:
+      print("Yes, 'Hello' is present.") # Print only if "Hello" is present:
+   -> print("expensive" not in a) # To check if a certain phrase or character is NOT present in a string, we can use the keyword not in.
+      Output: True
+   -> if "expensive" not in a: # Here we used if,not and in.
+      print("Yes, 'expensive' is NOT present.")
+   -> print(a.upper()) # To return Upper case
+   -> print(a.lower()) # To return lower case
+   -> print(a.strip()) # To removes any whitespace from the beginning or the end
+   -> print(a.replace("H", "J")) # To replaces a string with another string
+   -> print(a.split(",")) # To returns a list where the text between the specified separator becomes the list items(splits the string into substrings if it finds instances of the separator)
+
+=>> age = 36
+    txt = "My name is John, and I am {}"
+    print(txt.format(age)) # To insert numbers into strings
+
+=>> Escape Characters (The escape character allows you to use double quotes when you normally would not be allowed)
+    txt = "We are the so-called \"Vikings\" from the north."
+    
+=>> txt = "hello, and welcome to my world."
+    -> x = txt.capitalize() # To returns a string where the first character is upper case
+    -> x = txt.casefold() # To method returns a string where all the characters are lower case
+    
+=>> txt = "banana" (String center() Method)
+    -> x = txt.center(20)
+    -> x = txt.center(20, "O") # Taking up the space of 20 characters, with "banana" in the middle
+       Output: OOOOOOObananaOOOOOOO
+       
+=>> txt = "I love apples, apple are my favorite fruit"
+    x = txt.count("apple") # To returns the number of times a specified value appears in the string
+    x = txt.count("apple", 10, 24) (Search from position 10 to 24)
+    
+=>> txt = "Hello, welcome to my world."
+   -> x = txt.endswith("my world.", 5, 11) # (This method returns True if the string ends with the specified value, otherwise False)
+      Output: False
+   -> x = txt.find("welcome") # Returns the first occurrence of the specified value(if no returns output as -1)
+      Output: 7
+   -> x = txt.index("welcome") #  Rturns the first occurrence of the specified value(if no returns output as value error)
+
+=>> txt = "For only {price:.2f} dollars!" # This method formats the specified value(s) and insert them inside the string's placeholder(in {} only).
+    print(txt.format(price = 49))
+
+=>> txt = "Company12"
+   -> x = txt.isalnum() # Returns True if all the characters are alphanumeric,otherwise False.
+   -> x = txt.isalpha() # Returns True if all the characters are alphabet letters (a-z)
+
+=>> txt = "\u0033" #unicode for 3
+   -> x = txt.isdecimal() # Returns True if all the characters are decimals (0-9)
+   -> x = txt.isdigit() # Returns True if all the characters are digits, otherwise False
+   
+=>> a = "MyFolder"          # Returns True if the string is a valid identifier, otherwise False
+    b= "2bring"             # A string is considered a valid identifier if it only contains alphanumeric letters (a-z) and (0-9), or underscores (_). 
+    print(a.isidentifier())
+    print(b.isidentifier()) # A valid identifier cannot start with a number, or contain any spaces.
+    Outpt: True
+           False
+           
+=>> txt = "I like bananas"
+   -> x = txt.replace("bananas", "apples") # This method replaces a specified phrase with another specified phrase.
+   -> x = txt.split() # This method splits a string into a list
+   -> x = txt.title() # This method returns a string where the first character in every word is upper case. Like a header, or a title.
+   -> x = txt.upper() # This method returns a string where all characters are in upper case.
+
+=>> Booleans represent one of two values: True or False
+
+=>> Arithmetic operators(+,-,*,/,%,**,//)
+    Assignment operators(=, += , -= , *=, /= ,%= ,//=	,**=	,&=	,|=	,^=	,>>= ,<<=)
+    Comparison operators(==, !=, <, >, >=, <=)
+    Logical operators:(and, # Returns True if both statements are true, 
+                       or,  # Returns True if one of the statements is true
+                       not) # Reverse the result, returns False if the result is true
+    Identity operators(is,       # Returns True if a sequence with the specified value is present in the object
+                       is not )  # Returns True if a sequence with the specified value is not present in the object	
+    Membership operators(in,     # Returns True if a sequence with the specified value is present in the object
+                         not in) # Returns True if a sequence with the specified value is not present in the object
+    Bitwise operators(& ,| , ^ ,v ,<< ,>>)
+
+
+   
+
