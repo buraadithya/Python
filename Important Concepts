@@ -16,12 +16,11 @@
               A function with yield in it is still a function, that, when called, returns an instance of a generator object:
               Generators provide an easy, built-in way to create instances of Iterators.
 
-    Ex: # A simple generator function
-         def my_gen():
+    Ex: 
+         def my_gen():                               # A simple generator function
              n = 1
              print('This is printed first')
-        # Generator function contains yield statements
-             yield n
+             yield n                                 # Generator function contains yield statements
 
              n += 1
              print('This is printed second')
@@ -38,8 +37,7 @@
            >>> next(a)                 # We can iterate through the items using next().
            This is printed first
            1
-           >>> # Once the function yields, the function is paused and the control is transferred to the caller.
-
+                                       # Once the function yields, the function is paused and the control is transferred to the caller.
            >>> next(a)                 # Local variables and theirs states are remembered between successive calls.
            This is printed second
            2
@@ -57,7 +55,7 @@
               Python has an interesting feature called decorators to add functionality to an existing code.
               This is also called metaprogramming because a part of the program tries to modify another part of the program at compile time.
 
-    Ex: def first(msg):
+    Ex: def first(msg):                                              # First example
             print(msg)
        
         first("Hello")
@@ -69,7 +67,7 @@
             Hello
 
 
-         def my_cube(func):                        |
+         def my_cube(func):                        |                  # Second example
                                                    |
              def inner_f(args):                    |
                  lst=func(args)                    |->(Decorator)
