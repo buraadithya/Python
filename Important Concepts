@@ -1,1 +1,432 @@
 
+
+=>>              Iterables(__iter__)                             Vs                           Iterators(__next__)
+
+   -> Iterable is an object, which one can iterate over.              Iterator is an object, which is used to iterate over an iterable object using __next__() method. 
+                                                            
+   -> It generates an Iterator when passed to iter() method.          Iterators have __next__() method, which returns the next item of the object.
+ 
+   -> It will store in ram at once                                    It will store only one by one by initializing next()
+                                                                     
+   ->                                                                 Iterators are objects that have an __iter__ and a __next__ (next in Python 2) method                                                                    
+
+                                                                 
+                                                                     
+=>> Generators:
+              A function with yield in it is still a function, that, when called, returns an instance of a generator object:
+              Generators provide an easy, built-in way to create instances of Iterators.
+
+    Ex: # A simple generator function
+         def my_gen():
+             n = 1
+             print('This is printed first')
+        # Generator function contains yield statements
+             yield n
+
+             n += 1
+             print('This is printed second')
+             yield n
+
+             n += 1
+             print('This is printed at last')
+             yield n
+
+     output:
+           
+           >>> a = my_gen()            # It returns an object but does not start execution immediately.
+
+           >>> next(a)                 # We can iterate through the items using next().
+           This is printed first
+           1
+           >>> # Once the function yields, the function is paused and the control is transferred to the caller.
+
+           >>> next(a)                 # Local variables and theirs states are remembered between successive calls.
+           This is printed second
+           2
+
+           >>> next(a)
+           This is printed at last
+           3
+
+           >>> next(a)                 # Finally, when the function terminates, StopIteration is raised automatically on further calls.
+           
+               StopIteration
+           
+
+=>> Decorator:
+              Python has an interesting feature called decorators to add functionality to an existing code.
+              This is also called metaprogramming because a part of the program tries to modify another part of the program at compile time.
+
+    Ex: def first(msg):
+            print(msg)
+       
+        first("Hello")
+        
+        second = first
+        second("Hello")
+
+    output: Hello
+            Hello
+
+
+         def my_cube(func):                        |
+                                                   |
+             def inner_f(args):                    |
+                 lst=func(args)                    |->(Decorator)
+                 return [x*x*x for x in lst]       |
+             return inner_f                        |
+
+         @my_cube
+         def fun_1(lst):
+         return lst
+         print(fun_1([1,2,3,4]))
+
+     output: [1, 8, 27, 64]
+
+
+=>> What does the if __name__ == “__main__”: do?
+
+     When the Python interpreter reads a source file, it executes all of the code found in it.
+     Before executing the code, it will define a few special variables. 
+     
+     For example, 
+     if the python interpreter is running that module (the source file) as the main program, it sets the special __name__ variable to have a value "__main__". 
+     If this file is being imported from another module, __name__ will be set to the module's name.
+
+     One reason for doing this is that sometimes you write a module (a .py file) where it can be executed directly. 
+     Alternatively, it can also be imported and used in another module. 
+     By doing the main check, you can have that code only execute 
+     when you want to run the module as a program and not have it execute when someone just wants to import your module and call your functions themselves.
+
+=>> Functions: A function is a "block of code" which only runs when it is called.
+              You can pass data, known as parameters, into a function.
+
+       Ex: def e_o(n):
+               if n%2==0:
+                   print('even number')
+               else:
+                   print('odd number')
+           ev_odd=e_o(20)
+
+       Output:even number
+
+
+           Postional argument(Parameters assigned, but Not assigned any value)
+               |
+=>> def hello(Name,age=25):
+                     |
+                   Keyword argument(Assigned in the form of keyvalue pairs)
+
+
+=>> Map function: map(funtion,iterable)
+
+   -> fun  : It is a function to which map passes each element of given iterable.
+      iter : It is a iterable which is to be mapped.
+
+    Ex: 
+        def addition(n):
+	    return n + n
+        numbers = (1, 2, 3, 4)
+        result = map(addition, numbers)
+        print(list(result))
+   
+    Output:[2, 4, 6, 8]
+
+
+=>> Lambda function or Anonymous function: A lambda function can take any number of arguments, but can only have "one expression".
+                                           (lambda arguments : expression)
+    Ex: 
+        addition= lambda a,b=a+b
+        addition(12,14)
+   
+    Output: 26
+             
+         
+=>> Filter function:                 (sequence which needs to be filtered, it can be sets, lists, tuples, or containers of any iterators)
+                                        |
+                     filter(function, sequence)
+                              |
+                        (function that tests if each element of a sequence "true or not")
+
+    Returns:
+            Returns an iterator that is already filtered.    
+
+    Ex:
+       list1=[1,2,3,4,5,6]
+       f_result=list(filter(lambda x:x%2,list1)
+       print(f_result)
+
+    Output: [2,4,6]      
+
+
+=>>         Map                                 Vs                filter
+  
+  -> Map displays true and false output                   -> filter displays only true
+      
+     Ex: f_result=list(map(lambda x:x%2,list1)               Ex: f_result=list(filter(lambda x:x%2,list1)
+ 
+     Output:[false,true,false,true,false,true]               Output: [2,4,6]
+
+
+=>> List comprehension: list comprehension provides concise way to create lists
+   
+    Ex:
+        lst=[1,2,3,4,5]                                             (Here we can write condition in list comprehension)
+                                                                         |
+     -> lst1=[i*i for i in lst]              -> lst2=[i*i for i in lst if i%2==0]
+    
+        Output:[1,4,9,16,25]                    Output:[4,16]  
+
+
+=>> String formatting:
+
+    Ex:
+             def welcome_email(firstname,lastname):
+                 return "Hello {}.Everyone please welocome {}".format(firstname,lastname) 
+      
+             welcome("adithya,buraadithya")        
+
+    Output: 'Hello adithya.Everyone please welcome buraadithya'
+
+
+=>>                   Object-oriented Programming	                  Vs                                Procedural Programming
+
+1.	Object-oriented programming is the problem-solving approach and       Procedural programming uses a list of instructions to do computation step by step.
+    used where computation is done by using objects.	
+
+2.	It makes the development and maintenance easier.	                    It is not easy to maintain the codes when the project becomes lengthy.
+
+3.	It simulates the real world entity,                                   It doesn't simulate the real world,
+    So real-world problems can be easily solved through oops.	            It works on step by step instructions divided into small parts called functions.
+
+4.	It provides data hiding,                                              It doesn't provide any proper way for data binding, 
+    So it is more secure than procedural languages,                       so it is less secure.
+    You cannot access private data from anywhere.                                                                        
+	
+5.	Example: C++, Java, .Net, Python, C#, etc.                            Example: C, Fortran, Pascal, VB etc.
+      	
+
+=>> OOPs concept (Object-oriented programming System):
+
+  -> Class: A class is a 'blueprint' that defines the variables and the methods (Characteristics) common to all objects of a certain kind.  
+    
+     Ex:
+         class Human:                 # class
+             colour='white'
+             height=5.5
+             def run(self):
+                 print('running....')
+             def walk(self):
+                 print('walking....')
+         
+         adithya=human()              # object (An object (instance) is an instantiation of a class. 
+                                               When class is defined, only the description for the object is defined. Therefore, no memory or storage is allocated)
+        
+         print(adithya.colour,adithya.height)
+         adithya.run()
+         adithya.walk()
+
+      Output: white  5.5
+              
+              running....
+              walking....
+
+   -> The __init__ method :
+                           "In Python the __init__() method is called the constructor and is always called when an object is created"
+                           Constructors are generally used for instantiating an object.
+                           The task of constructors is to initialize(assign values) to the data members of the class when an object of class is created.
+                           
+      Ex:
+          class GeekforGeeks:
+
+	      def __init__(self):              # default constructor
+	          self.geek = "GeekforGeeks"
+
+	      def print_Geek(self):            # a method for printing data members
+	          print(self.geek)
+
+          obj = GeekforGeeks()                 # creating object of the class
+
+          obj.print_Geek()                     # calling the instance method using the object obj
+
+    
+   -> self in Python class: 
+                            self represents the instance of the class. 
+                            By using the “self” keyword we can access the attributes and methods of the class in python. 
+                            It binds the attributes with the given arguments
+
+   -> Inheritance: Inheritance is the capability of one class to inherit the properties from another class
+
+                   child class derived from parent class
+      Ex:  
+          class base class()                  #Parent class               # SINGLE INHERITANCE
+              a=10
+              b=100
+              def display(self):
+                  print('base class')
+          class derived class(base class):    #Child class
+              c=20
+              d=200
+              def show (self)
+                  print('derived class')
+          
+          dobject=derived class()             # Object
+         
+          print(dobject.c,dobject.d)
+          dobject.show
+          
+          print(dobject.a,dobject.b)
+          dobject.display()
+
+      Output: 20  200
+              derived class
+
+              10  100
+              base class
+
+
+          class GrandParent:                                              # MULTIPLE INHERITANCE
+              def gdisplay(self):
+                  print('GRAND PARENT METHOD')   
+          class Parent:
+              def pdisplay(self):
+                  print('PARENT METHOD')
+          class Child:
+              def cdisplay(self):
+                  print('CHILD METHOD')
+                         
+          C=Child()
+                                                                     
+          c.cdisplay()
+          c.pdisplay()
+
+                                                                           
+       Output: CHILD DISPLAY
+               PARENT DISPLAY
+
+
+   -> Super() keyword:
+                      In an inherited subclass, a parent class can be referred to with the use of the super() function. 
+                      The super function returns a temporary object of the superclass that allows access to all of its methods to its child class.
+
+      Ex:
+         class Mammal(object):
+             def __init__(self, mammalName):
+                 print(mammalName, 'is a warm-blooded animal.')
+    
+         class Dog(Mammal):
+             def __init__(self):
+                 print('Dog has four legs.')
+                 super().__init__('Dog')
+    
+         d1 = Dog()
+
+      Output:
+             Dog has four legs.
+             sDog is a warm-blooded animal.
+
+
+    -> Data Abstraction:
+                         Abstraction is used to hide internal details and show only functionalities. 
+                         Abstracting something means to give names to things, so that the name captures the basic idea of what a function or a whole program does.
+
+                         Data abstraction and encapsulation are synonymous as data abstraction is achieved through encapsulation.
+
+       Ex: 
+           from abc import ABC, abstractmethod   
+
+           class Polygon(ABC):                                 # abstract class  
+               def sides(self):                                # abstract method  
+                   pass  
+  
+           class Triangle(Polygon):   
+               def sides(self):   
+                   print("Triangle has 3 sides")   
+  
+           class Pentagon(Polygon):   
+               def sides(self):   
+                   print("Pentagon has 5 sides")  
+         
+           t = Triangle()   
+           t.sides() 
+ 
+           p = Pentagon()   
+           p.sides()  
+  
+         Output: Triangle has 3 sides
+                 Pentagon has 5 sides
+
+       Explanation: we have defined the abstract base class named Polygon and we also defined the abstract method. 
+                    This base class inherited by the various subclasses. We implemented the abstract method in each subclass. 
+                    We created the object of the subclasses and invoke the sides() method. 
+                    The hidden implementations for the sides() method inside the each subclass comes into play. 
+                    The abstract method sides() method, defined in the abstract class, is never invoked.
+       
+       NOTE: An Abstract class can contain the both method normal and abstract method.
+             An Abstract cannot be instantiated; we cannot create objects for the abstract class.
+  
+
+    -> Encapsulation:
+                     Encapsulation is used to restrict access to methods and variables.()
+                     In encapsulation, code and data are wrapped together within a single unit from being modified by accident.
+       Ex:
+           class Computer:                                     # double __ or single _ = Private variables
+                                                               # Single _              = Protected variables
+               def __init__(self):                             # No _                  = Public variables     
+                   self.__maxprice = 900
+
+               def sell(self):
+                   print("Selling Price: {}".format(self.__maxprice))
+
+               def setMaxPrice(self, price):
+               self.__maxprice = price
+
+               c = Computer()
+               c.sell()
+
+               c.__maxprice = 1000 # change the price
+               c.sell()
+
+               c.setMaxPrice(1000) # using setter function
+               c.sell()
+          
+       Output: Selling Price: 900
+               Selling Price: 900
+               Selling Price: 1000
+              
+
+    -> Polymorphism:
+                    Polymorphism defines that one task can be performed in different ways. 
+                      
+                    Example: We have a class animal and all animals talk. But they talk differently. Here, the "talk" behaviour totally depends on the animal. 
+                             So, the abstract "animal" does not actually "talk", but specific animals have a concrete implementation of the action "talk".
+       Ex:
+           class Parrot:
+
+               def fly(self):
+                   print("Parrot can fly")
+    
+               def swim(self):
+                   print("Parrot can't swim")
+
+           class Penguin:
+
+               def fly(self):
+                   print("Penguin can't fly")
+    
+               def swim(self):
+                   print("Penguin can swim")
+
+          def flying_test(bird):                 # common interface
+              bird.fly()
+
+          blu = Parrot()                         # instantiate objects
+          peggy = Penguin()
+
+          flying_test(blu)                       # passing the object
+          flying_test(peggy)
+
+       Output: Parrot can fly
+               Penguin can't fly
+        
+  
